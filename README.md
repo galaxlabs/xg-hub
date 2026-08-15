@@ -3,6 +3,19 @@
 One repo combining three Frappe-wired frontends, all backed by the cclms Frappe site
 (`btm.digihoopoe.com`). Use this to test which modules you want to keep/deploy.
 
+**GitHub**: https://github.com/galaxlabs/xg-hub
+
+## Live Deployments (Vercel)
+
+| Module | URL | Project |
+|---|---|---|
+| crm-analytics | https://xg-system.vercel.app | galaxlabs-projects/xg-system |
+| sales-portal | https://sales-portal-alpha.vercel.app | galaxlabs-projects/sales-portal |
+| hrms | https://hrms-portal-weld.vercel.app | galaxlabs-projects/hrms-portal |
+
+Each Vercel project has a `vercel.json` rewrite so `/api/frappe/*` (and `/api/method/*` for
+crm-analytics) proxies to `https://btm.digihoopoe.com` — no Node backend needed on Vercel.
+
 **Read first**: [`VISION_AND_ROADMAP.md`](VISION_AND_ROADMAP.md) — the SaaS "Digital Services OS" vision & future plan.
 **Ideas**: [`IDEAS.md`](IDEAS.md) — brainstorming (hiring, LinkedIn, WhatsApp CV, social hub, billing).
 
