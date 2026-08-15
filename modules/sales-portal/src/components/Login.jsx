@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, Mail, LogIn, ShieldCheck, KeyRound } from 'lucide-react';
+import { login as frappeLogin } from '../lib/frappeApi';
 
 export default function Login({ onLogin, resetTokenFromUrl }) {
   const [step, setStep] = useState(resetTokenFromUrl ? 'resetPassword' : 'credentials');
@@ -23,23 +24,23 @@ export default function Login({ onLogin, resetTokenFromUrl }) {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier, password })
+      const me = await frappeLogin(identifier, password);
+      // Sales-agent profile from cclms (shared with XG Hub): user, full_name,
+      // salesAgent, branch, company, employee, is_manager, roles.
+      const role = me?.is_manager ? 'admin' : 'sales';
+      onLogin({
+        id: me?.user || identifier,
+        email: identifier,
+        name: me?.full_name || identifier,
+        role,
+        salesAgent: me?.salesAgentName || me?.salesAgent,
+        branch: me?.branch,
+        company: me?.company,
+        employee: me?.employee,
       });
-      const data = await res.json();
-
-      if (res.ok && data.requires2FA) {
-        setEmployeeId(data.employeeId);
-        setMaskedEmail(data.email);
-        setStep('twoFactor');
-      } else {
-        setError(data.message || 'Login failed.');
-      }
     } catch (err) {
       console.error(err);
-      setError('Could not connect to server.');
+      setError(err.message || 'Login failed.');
     } finally {
       setLoading(false);
     }

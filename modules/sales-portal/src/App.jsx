@@ -1,5 +1,6 @@
 import Settings from './components/Settings';
 import socket from './lib/socket';
+import { listLeads, listFollowUps, fetchCompanies } from './lib/frappeApi';
 import React, { useState, useEffect } from 'react';
 import TopBar from './components/TopBar';
 import Sidebar from './components/Sidebar';
@@ -113,42 +114,23 @@ function App() {
   }, [theme]);
   const [showNotification, setShowNotification] = useState(false);
 
-  // Fetch data from Node.js backend
+  // Fetch data from Frappe cclms (via frappeApi — no Node backend)
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const tasksUrl = isAdminUser
-          ? '/api/tasks'
-          : `/api/tasks?employeeId=${currentUser?.id}`;
-
-        const [
-          leadsRes, followUpsRes, campaignsRes, companiesRes,
-          documentsRes, meetingsRes, tasksRes
-        ] = await Promise.all([
-          fetch('/api/leads'),
-          fetch('/api/followups'),
-          fetch('/api/campaigns'),
-          fetch('/api/companies'),
-          fetch('/api/documents'),
-          fetch('/api/meetings'),
-          fetch(tasksUrl)
+        const [leadsData, followUpsData, companiesData] = await Promise.all([
+          listLeads().catch(() => []),
+          listFollowUps().catch(() => []),
+          fetchCompanies().catch(() => []),
         ]);
-
-        if (leadsRes.ok) setLeads(await leadsRes.json());
-        if (followUpsRes.ok) setFollowUps(await followUpsRes.json());
-        if (campaignsRes.ok) setCampaigns(await campaignsRes.json());
-        if (companiesRes.ok) setCompanies(await companiesRes.json());
-        if (documentsRes.ok) setDocuments(await documentsRes.json());
-        if (meetingsRes.ok) setMeetings(await meetingsRes.json());
-        if (tasksRes.ok) setTasks(await tasksRes.json());
-
-        if (currentUser?.id) {
-          const statusRes = await fetch(`/api/google/status?employeeId=${currentUser.id}`);
-          if (statusRes.ok) {
-            const statusData = await statusRes.json();
-            setGoogleConnected(statusData.connected);
-          }
-        }
+        setLeads(leadsData);
+        setFollowUps(followUpsData);
+        setCompanies(companiesData);
+        setCampaigns([]);
+        setDocuments([]);
+        setMeetings([]);
+        setTasks([]);
+        setGoogleConnected(false);
       } catch (error) {
         console.error("Error fetching data from backend:", error);
       } finally {
@@ -156,8 +138,8 @@ function App() {
       }
     };
 
-    fetchData();
-  }, []);
+    if (isAuthenticated) fetchData();
+  }, [isAuthenticated]);
 
   // Follow-up reminders check
   useEffect(() => {

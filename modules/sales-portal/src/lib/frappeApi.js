@@ -156,6 +156,16 @@ export async function listFollowUps() {
   return rows || [];
 }
 
+export async function fetchCompanies() {
+  const rows = await call('frappe.client.get_list', {
+    doctype: 'Operator Companies',
+    fields: ['name', 'operator_name'],
+    limit_page_length: 200,
+    order_by: 'operator_name asc',
+  }, { mutation: false });
+  return rows || [];
+}
+
 export async function scheduleFollowUp(payload) {
   return call('cclms.api.follow_up.schedule_follow_up', payload);
 }
