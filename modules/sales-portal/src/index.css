@@ -1,0 +1,189 @@
+:root {
+  /* Red/Black/White Palette */
+  --bx-topbar-bg: #050505;
+  --bx-topbar-bg-gradient: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+  --bx-sidebar-bg: #0d0d0d;
+  --bx-workspace-bg: #050505;
+  --bx-right-bar-bg: #0a0a0a;
+
+  --bx-text-main: #f5f5f5;
+  --bx-text-muted: #888888;
+  --bx-text-link: #d32f2f;
+
+  --bx-border: #222222;
+  --bx-border-dark: #333333;
+
+  --bx-accent-green: #4caf50;
+  --bx-accent-blue: #d32f2f;
+  /* Using red instead of blue for primary accent */
+  --bx-accent-orange: #ff9800;
+  --bx-accent-red: #f44336;
+
+  --bx-white: #111111;
+  /* White panels become dark panels */
+
+  --bx-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body[data-theme="light"] {
+  --bx-topbar-bg: #ffffff;
+  --bx-topbar-bg-gradient: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  --bx-sidebar-bg: #f7f7f7;
+  --bx-workspace-bg: #eeeeee;
+  --bx-right-bar-bg: #f7f7f7;
+
+  --bx-text-main: #1a1a1a;
+  --bx-text-muted: #666666;
+  --bx-text-link: #d32f2f;
+
+  --bx-border: #e0e0e0;
+  --bx-border-dark: #cccccc;
+
+  --bx-accent-green: #4caf50;
+  --bx-accent-blue: #d32f2f;
+  --bx-accent-orange: #ff9800;
+  --bx-accent-red: #f44336;
+
+  --bx-white: #ffffff;
+}
+
+body[data-theme="lavender"] {
+  --bx-topbar-bg: #ffffff;
+  --bx-topbar-bg-gradient: linear-gradient(180deg, #ffffff 0%, #f3effa 100%);
+  --bx-sidebar-bg: #f6f2fb;
+  --bx-workspace-bg: #efe8f7;
+  --bx-right-bar-bg: #f6f2fb;
+
+  --bx-text-main: #3a2e4d;
+  --bx-text-muted: #8b7a9e;
+  --bx-text-link: #8e5fc7;
+
+  --bx-border: #e3d9f0;
+  --bx-border-dark: #d0c0e6;
+
+  --bx-accent-green: #4caf50;
+  --bx-accent-blue: #9c6fd6;
+  --bx-accent-orange: #ff9800;
+  --bx-accent-red: #f44336;
+
+  --bx-white: #ffffff;
+}
+
+body[data-theme="pink"] {
+  --bx-topbar-bg: #ffffff;
+  --bx-topbar-bg-gradient: linear-gradient(180deg, #ffffff 0%, #fdf0f4 100%);
+  --bx-sidebar-bg: #fdf1f5;
+  --bx-workspace-bg: #fbe8ee;
+  --bx-right-bar-bg: #fdf1f5;
+
+  --bx-text-main: #4a2f3a;
+  --bx-text-muted: #a17d8c;
+  --bx-text-link: #e0679a;
+
+  --bx-border: #f5d9e3;
+  --bx-border-dark: #eec2d3;
+
+  --bx-accent-green: #4caf50;
+  --bx-accent-blue: #ec6fa3;
+  --bx-accent-orange: #ff9800;
+  --bx-accent-red: #f44336;
+
+  --bx-white: #ffffff;
+}
+
+body[data-theme="ocean"] {
+  --bx-topbar-bg: #ffffff;
+  --bx-topbar-bg-gradient: linear-gradient(180deg, #ffffff 0%, #eef6fb 100%);
+  --bx-sidebar-bg: #f0f7fb;
+  --bx-workspace-bg: #e6f1f8;
+  --bx-right-bar-bg: #f0f7fb;
+
+  --bx-text-main: #1c3a4a;
+  --bx-text-muted: #6c8fa0;
+  --bx-text-link: #1e88c7;
+
+  --bx-border: #d6e9f2;
+  --bx-border-dark: #bcdcea;
+
+  --bx-accent-green: #4caf50;
+  --bx-accent-blue: #1e88c7;
+  --bx-accent-orange: #ff9800;
+  --bx-accent-red: #f44336;
+
+  --bx-white: #ffffff;
+}
+
+body[data-theme="slate"] {
+  --bx-topbar-bg: #1e2530;
+  --bx-topbar-bg-gradient: linear-gradient(180deg, #232b38 0%, #171c25 100%);
+  --bx-sidebar-bg: #1a212b;
+  --bx-workspace-bg: #151a22;
+  --bx-right-bar-bg: #1a212b;
+
+  --bx-text-main: #eef1f5;
+  --bx-text-muted: #8c97a6;
+  --bx-text-link: #5b9dd9;
+
+  --bx-border: #2c3644;
+  --bx-border-dark: #3a4553;
+
+  --bx-accent-green: #4caf50;
+  --bx-accent-blue: #5b9dd9;
+  --bx-accent-orange: #ff9800;
+  --bx-accent-red: #f44336;
+
+  --bx-white: #1e2530;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--bx-font);
+  background-color: var(--bx-workspace-bg);
+  color: var(--bx-text-main);
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: var(--bx-text-link);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #b71c1c;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bx-accent-blue);
+  /* Red hover */
+}

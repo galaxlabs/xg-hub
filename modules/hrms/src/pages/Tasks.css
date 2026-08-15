@@ -1,0 +1,46 @@
+.tasks-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.task-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.task-completed-row {
+  opacity: 0.7;
+}
+
+.task-completed-row td {
+  background-color: rgba(16, 185, 129, 0.02);
+}
+
+.action-btn.success {
+  color: var(--text-muted);
+}
+
+.action-btn.success:hover {
+  color: var(--success-color);
+  background-color: #d1fae5;
+}
+
+@media (max-width: 768px) {
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+}

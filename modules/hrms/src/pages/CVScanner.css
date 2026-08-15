@@ -1,0 +1,5 @@
+/* Minimal - most styles are inline in the component */
+body {
+    margin: 0;
+    background: var(--bg-color);
+}

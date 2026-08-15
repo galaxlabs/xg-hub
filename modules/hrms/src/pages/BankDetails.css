@@ -1,0 +1,74 @@
+.bank-details-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.bank-table th {
+  background-color: #f8fafc;
+  color: #475569;
+}
+
+.emp-avatar.small {
+  width: 28px;
+  height: 28px;
+  font-size: 0.75rem;
+  background-color: var(--secondary-color);
+}
+
+.emp-id-badge {
+  background-color: #f1f5f9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.dept-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.bank-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.bank-icon {
+  color: var(--secondary-color);
+}
+
+.account-number {
+  font-family: monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  color: var(--primary-color);
+  background-color: rgba(59, 130, 246, 0.05);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  display: inline-block;
+}
+
+.ledger-stats {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.ledger-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #d1fae5;
+}

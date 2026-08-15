@@ -1,0 +1,8 @@
+{
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/method/:path*", "destination": "https://btm.digihoopoe.com/api/method/:path*" },
+    { "source": "/api/frappe/:path*", "destination": "https://btm.digihoopoe.com/api/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

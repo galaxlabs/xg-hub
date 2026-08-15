@@ -1,0 +1,328 @@
+.payroll-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.rules-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(59, 130, 246, 0.05);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.rules-ribbon p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.salary-text {
+  color: var(--text-muted);
+  font-family: monospace;
+  font-size: 1.05rem;
+}
+
+.final-salary-text {
+  color: var(--secondary-color);
+  font-size: 1.15rem;
+  font-family: monospace;
+}
+
+.attendance-badges {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.attendance-badges span {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-present { background-color: #f0fdf4; color: #166534; }
+.badge-late { background-color: #f8fafc; color: #64748b; }
+.badge-late.warning { background-color: #fef3c7; color: #b45309; }
+.badge-leave { background-color: #f8fafc; color: #64748b; }
+.badge-leave.danger { background-color: #fef2f2; color: #b91c1c; }
+
+.deduction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.deduction-amount {
+  color: var(--danger-color);
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.deduction-reason {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.no-deduction {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 100px;
+}
+
+.status-badge.paid { background-color: #d1fae5; color: #065f46; }
+.status-badge.pending { background-color: #fef3c7; color: #92400e; }
+.status-badge.unpaid { background-color: #fee2e2; color: #991b1b; }
+.status-badge.processing { background-color: #e0f2fe; color: #075985; }
+
+/* Ensure select options are readable */
+.status-badge option {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+/* Table styles fix */
+.data-table td {
+  vertical-align: middle !important;
+  height: 80px; /* Consistent height for payroll rows due to multiple lines */
+}
+
+.action-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 100%;
+  width: 100%;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+  background-color: var(--bg-active);
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background-color: var(--border-color);
+  color: var(--primary-color);
+}
+
+/* Snappy & Clean Payroll Modal Styles */
+.payroll-modal.modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 999999 !important;
+  backdrop-filter: none !important; /* Removed blur to fix lag */
+}
+
+.payroll-modal .modal-content {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  width: 550px !important;
+  max-width: 95% !important;
+  border-radius: 12px !important;
+  border: 1px solid #334155 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  animation: none !important; /* Removed animation to fix lag */
+}
+
+.payroll-form-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 15px !important;
+  padding: 20px !important;
+}
+
+.payroll-form-group.full-width {
+  grid-column: span 2 !important;
+}
+
+.payroll-form-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.payroll-form-group label {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #94a3b8 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em;
+}
+
+.payroll-form-group input {
+  width: 100% !important;
+  padding: 10px 12px !important;
+  background-color: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  outline: none !important;
+}
+
+.payroll-form-group input:focus {
+  border-color: #3b82f6 !important;
+}
+
+.payroll-modal-footer {
+  padding: 15px 20px !important;
+  background-color: #1e293b !important;
+  border-top: 1px solid #334155 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+}
+
+.pill {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pill.warning { background-color: #fef3c7; color: #b45309; }
+.pill.danger { background-color: #fef2f2; color: #b91c1c; }
+
+/* Metrics Cards Styles */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.metric-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metric-details h3 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .header-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .table-actions {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .filter-actions {
+    width: 100%;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+}
