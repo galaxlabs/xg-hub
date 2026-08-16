@@ -38,14 +38,18 @@ async function call(method, args = {}, opts = {}) {
 
 // ---- AUTH ---------------------------------------------------------------
 export async function login(identifier, password) {
-  // Login via Frappe session; resolve the sales agent profile.
-  const res = await fetch(`${BASE}/method/cclms.api.portal_auth_v3.login`, {
+  // Standard Frappe session login (sets the session cookie), then resolve the
+  // sales-agent profile via the SANHA model (same as XG Hub).
+  const res = await fetch(`${BASE}/method/login`, {
     method: 'POST', credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ usr: identifier, pwd: password }),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    body: new URLSearchParams({ usr: identifier, pwd: password }).toString(),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.message || 'Login failed');
+  if (!res.ok || data.exc) {
+    const msg = data._server_messages ? JSON.parse(data._server_messages)[0]?.message : data.message || data.exception || 'Invalid login credentials';
+    throw new Error(msg);
+  }
   const me = await call('cclms.api.crm_portal.get_current_sales_agent', {}, { mutation: false });
   return me; // { user, full_name, sales_agent, branch, company, employee, roles }
 }
